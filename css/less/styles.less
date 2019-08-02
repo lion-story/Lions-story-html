@@ -1,0 +1,670 @@
+@charset "utf-8";
+/*------------------------------------------------------------------
+[Main Theme Styles]
+
+Project:  Rinn - Comming Soon / 404 Page + Mailchimp Integration
+Author: Diego Pereira @ DotRex
+Version:  1.0
+Last change:  21/08/14 
+Primary use:  Comming Soon / 404 page
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. General
+2. Content
+3. Modal Box
+4. Footer
+5. Page Loader
+6. Validate Plugin
+7. Typed plugin
+8. Countdown Plugin
+-------------------------------------------------------------------*/
+
+/*============================================================================
+  >> 1. General
+  ============================================================================
+ */
+@import 'variables.less';
+
+
+body { 
+  color: @textcolor;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased!important;
+  font-weight: 300;
+  text-align: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+a {
+  color: @textcolor;
+}
+
+.bg-mask {
+  background: url('../img/bg-mask-80.png');
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.bg-mask.bg-mask-30 {
+  background-image: url('../img/bg-mask-30.png');
+}
+
+.bg-mask.bg-mask-50 {
+  background-image: url('../img/bg-mask-50.png');
+}
+
+.page-background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: #000;
+}
+
+.page-background {
+  background: url('../img/bg1.jpg') no-repeat center center;
+  width: 110%!important;
+   position: fixed;
+  top: -50px;
+  left: -20px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.logo {
+  img {
+    width: 100%;
+  }
+}
+
+
+.tleft {
+  text-align: left;
+  @media @mobile {
+    text-align: center;
+  }
+}
+
+.tright {
+  text-align: right;
+   @media @mobile {
+    text-align: center;
+  }
+}
+
+.tcenter {
+  text-align: center;
+}
+
+/*Subscribe*/
+.no-padding {
+  @media @laptop {
+    padding: 0px !important;
+  }  
+}
+
+.form-subscribe {
+  height: 45px;
+  @media @mobile {
+    margin-bottom: 10px;
+  }
+  @media @laptop {
+    margin-bottom: 0;
+  }
+}
+
+.btn-default {
+  background: none!important;
+  border: 1px solid @textcolor!important;
+  color: @textcolor;
+  display: inline-block;
+  height: 45px;
+  line-height: 45px;
+  font-weight: bold;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom: 8px;
+  .anima1;
+  @media @laptop {
+    font-size: 14px;
+  }
+  @media @mobile {
+    width: 100%;
+  }
+  &:hover {
+    color: @textcolor;
+    background: @color1!important;
+    border: 1px solid @color1 - #222!important;
+    .btn-ico {
+      width: 0;
+    }
+  }
+}
+
+.btn-subscribe {
+  background: @color1!important;
+  border: 1px solid @color1 - #222!important;
+  .anima(0.3s);
+  &:hover {
+    background: @color1 - #111!important;
+  }
+}
+
+.btn-ico {
+  width: 15px;
+  margin-right: 5px;
+  overflow: hidden;
+  text-align: center;
+  .anima1;  
+}
+
+
+/*============================================================================
+  >> 2. Content
+  ============================================================================
+ */
+.header {
+  opacity: 0.7;
+  .anima(0.3s);
+  padding-top: 20px;
+  &:hover {
+    opacity: 1;
+  }
+  a {   
+    font-size: 16px;  
+  }
+}
+
+.header-left {
+  text-align: center;
+}
+
+.header-right {
+  text-align: right;
+  a {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 24px;
+    display: inline-block;
+    margin-left: 5px;    
+    margin-right: 5px;    
+    text-transform: uppercase;
+    padding-left: 5px;
+    padding-right: 5px;
+    .border-radius(5px);
+    border: 1px solid transparent;
+    .anima(0.3s);
+    @media @laptop {
+      font-size: 18px;
+      height: 45px;
+      line-height: 45px;
+    }
+    &:hover {
+      color: @textcolor;
+      text-decoration: none;
+      border: 1px solid #eee;
+    }
+  }
+} 
+
+.main-content {
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.logo-image {
+  width: 100px; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+  img {
+    width: 100%;    
+  }
+}
+
+.menu-button {
+  font-size: 18px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.main-menu {
+  margin-top: 30px;
+  margin-bottom: 0;
+  a {
+    
+  }
+}
+
+.main-phrase {
+  font-size: 60px;  
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-align: center;
+  color: @textcolor;
+  opacity: 0.9;
+  margin-bottom: 40px;
+  @media @laptop {
+     font-size: 95px;
+    line-height: 95px;
+    min-height: 190px;
+    letter-spacing: -6px;
+  } 
+  @media @full-hd {
+    font-size: 125px;
+    line-height: 125px;
+    min-height: 250px;
+    margin-top: 60px;
+  }
+}
+
+.main-phrase-404 {
+  @media @laptop {
+    font-size: 180px;
+    margin-top: 130px;
+    min-height: 110px;
+  }  
+}
+
+
+.mini-block {
+  border: 0;
+  width: 50px;
+  margin: 0 auto;
+  border-top: 5px solid #eee;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.secondary-phrase {
+  @media @laptop {
+    width: 400px;
+    margin: 0 auto;
+  }  
+  text-align: center;
+  font-size: 24px;
+  min-height: 28px;
+  font-weight: 200;
+  text-transform: lowercase;
+}
+
+.bot-content {
+  margin-top: 40px;
+}
+
+@media @mobile {
+  .tags-slides {
+    text-align: center;
+    li {
+      font-size: 24px;
+    }
+  }
+}
+
+.btn {
+  width: 100%;
+}
+
+.rodape {
+  font-size: 14px;
+  margin-top: 20px;
+  @media @desktop {
+    margin-top: 50px;
+  }
+  @media @laptop {
+    margin-top: 30px;
+  }
+  @media @mobile {
+    font-size: 13px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+.subscribe-text {
+  text-align: center;
+  margin-bottom: 20px;
+  p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 200px;
+  }
+}
+
+
+
+/*============================================================================
+  >> 3. Modal Box
+  ============================================================================
+*/
+.page-wrap {  
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  @media @laptop {
+  }
+}
+
+.page-bg {
+  width: 100%;
+  position: absolute;
+  background: url(../img/page-bg.png);
+  padding-top: 8%;
+  @media @mobile {
+    padding-top: 5%;
+  }
+}
+
+.page-box {
+  .border-radius(10px);
+  background: @textcolor;
+  padding: 20px 30px;
+  position: relative;
+  p {
+    color: @colorgray;
+  }
+}
+
+.page-box-about-us {
+  text-align: left;
+}
+
+.close-box-link, .close-box-button {
+  a {
+    color: @color1!important;
+  }  
+}
+
+.ico-close {
+  position: absolute;
+  background: url('../img/close.png') no-repeat center top ;
+  width: 27px;
+  height: 27px;
+  top: -35px;
+  right: -35px;
+  cursor: pointer;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+  .anima(0.2s);
+  opacity: 0.8;
+  &:hover {
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
+    opacity: 1;
+  }
+}
+
+.box-tit1 {
+  color: @color1;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 42px;
+  margin-top: 0;
+}
+
+.hr-p {
+  height: 5px;
+  width: 20%;
+  background: @color1;
+  margin-top: 5px;
+  margin-bottom: 20px; 
+}
+
+.form-group {
+  margin-bottom: 5px;
+  input[type=text], input[type=email]{
+    .border-radius(0);
+    height: 40px;
+  }
+  textarea {
+    .border-radius(0);
+    width: 100%!important;
+    height: 130px!important;
+  }
+  .btn-default {
+    background: @color1!important;    
+    color: @textcolor!important;
+    .border-radius(0);
+    width: 100%;
+    border: 2px solid @color1 - #111!important;
+    &:hover {
+      background: @color1 - #111!important;
+      border: 2px solid @color1!important;
+      color: @textcolor!important;
+    }
+  }
+}
+
+/*============================================================================
+  >> 4. Footer
+  ============================================================================
+*/
+#footer {
+  text-align: center;
+}
+
+.social-nav {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  a {
+    display: inline-block;
+    border: 1px solid @textcolor;
+    color: @textcolor;
+    margin-right: 5px;
+    .border-radius(100%);
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    text-align: center;
+    .anima(0.3s);
+    .anima-transform;
+    &:hover {
+      background: @color1;
+      border: 1px solid @color1 - #333;
+      color: @textcolor;
+      -webkit-transform:rotate(360deg);
+    -moz-transform:rotate(360deg);
+    -o-transform:rotate(360deg);
+    }
+  }
+}
+
+
+/*============================================================================
+  >> 5. Page Loader
+  ============================================================================
+*/
+#page-loader {
+  width: 100%;
+  height: 100%;
+  background: #111;
+  color: @textcolor;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+
+}
+
+.loading-wrapper {
+  width: 250px;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  margin-left: -125px;
+}
+
+.loading-logo-wraper {
+  width: 100px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  img {
+    width: 100%;
+  }
+}
+.tp-loader {
+  z-index: 10000;
+  position: relative;
+}
+.tp-loader.spinner {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  background-color: none;
+  border: 2px solid @textcolor;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+  -webkit-animation: tp-rotateplane 0.8s infinite ease-in-out;
+  animation: tp-rotateplane 0.8s infinite ease-in-out;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+@-webkit-keyframes tp-rotateplane {
+  0% {
+    
+  }
+  50% {
+    -webkit-transform:  rotate(180deg);
+  }
+  100% {
+    -webkit-transform:  rotate(180deg);
+  }
+}
+@keyframes tp-rotateplane {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180.1deg) ;
+    -webkit-transform: rotate(180.1deg);
+  }
+  100% {
+    transform: rotate(180.1deg) ;
+    -webkit-transform: rotate(180.1deg);
+  }
+}
+
+/*============================================================================
+  >> 6. Validate Plugin
+  ============================================================================
+*/
+
+.form-group {
+  position: relative;
+}
+
+label.error {
+  color: @textcolor;
+  background: #333;
+  white-space: nowrap;
+  padding: 8px;
+  border-radius: 5px;
+  position: absolute;
+  top: -5px;
+  font-weight: 200;
+  right: -20px;
+}
+
+.contact-feedback {
+  text-align: center;
+  color: #333;
+  font-size: 22px;
+  padding: 10px;
+}
+
+
+/*============================================================================
+  >> 7. Typed Plugin
+  ============================================================================
+ */
+.typed-cursor{
+    opacity: 1;
+    color: @textcolor;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+
+/*============================================================================
+  >> 8. Countdown Plugin
+  ============================================================================
+*/
+#countdown {
+  margin-bottom: 40px;
+  margin-top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.countdown-col {
+  @media @laptop {
+    border-right: 1px dotted @textcolor - #222;
+    border-left: 1px dotted @textcolor - #222;
+    margin-right: -1px;
+    margin-bottom: 20px;
+  }  
+}
+
+.countdown-time {
+  @media @mobile {
+    font-size: 48px;
+    display: block;
+    font-weight: bold;
+  }
+  @media @laptop {
+    font-size: 48px;
+    display: block;
+    font-weight: bold;
+  }  
+}
